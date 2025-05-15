@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Theme Settings</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #4caf50;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #007bff;
+    }
+    html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;      /* Prevent side scroll */
+  overflow-y: auto;        /* Allow vertical scroll */
+  overscroll-behavior: contain;
+  touch-action: pan-y;     /* Allow vertical hand scroll only */
+}
+  </style>
+</head>
+<body>
+  <h2>Theme Settings</h2>
+
+  <div class="theme-toggle">
+    <label for="themeSwitch">Dark Mode</label>
+    <label class="switch">
+      <input type="checkbox" id="themeSwitch">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <a href="index.html">← Back to Home</a>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const switchInput = document.getElementById("themeSwitch");
+      const savedTheme = localStorage.getItem("theme");
+
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        switchInput.checked = true;
+      }
+
+      switchInput.addEventListener("change", () => {
+        if (switchInput.checked) {
+          document.body.classList.add("dark-mode");
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.body.classList.remove("dark-mode");
+          localStorage.setItem("theme", "light");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

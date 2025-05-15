@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"/>
+  <title>Forgot Password</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right,  #00c6ff, #0072ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .forgot-box {
+      background: #ffffff10;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+      backdrop-filter: blur(10px);
+    }
+
+    .forgot-box h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .forgot-box input {
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .forgot-box button {
+      width: 100%;
+      padding: 14px;
+      background: #ffffff;
+      color: #0072ff;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .forgot-box p {
+      text-align: center;
+      margin-top: 20px;
+    }
+    html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;      /* Prevent side scroll */
+  overflow-y: auto;        /* Allow vertical scroll */
+  overscroll-behavior: contain;
+  touch-action: pan-y;     /* Allow vertical hand scroll only */
+}
+  </style>
+</head>
+<body>
+
+  <div class="forgot-box">
+    <h2>Forgot Password</h2>
+    <input type="email" id="recoverEmail" placeholder="Enter your email" required>
+    <button onclick="recoverPassword()">Recover</button>
+    <p id="recoveryResult"></p>
+  </div>
+
+  <script>
+    function recoverPassword() {
+      const email = document.getElementById("recoverEmail").value;
+      const storedUser = JSON.parse(localStorage.getItem(email));
+      const result = document.getElementById("recoveryResult");
+
+      if (storedUser) {
+        result.innerHTML = `
+          <strong>Account Found!</strong><br>
+          Name: ${storedUser.name}<br>
+          Phone: ${storedUser.phone}<br>
+          Hint: Your password starts with <b>${storedUser.password.slice(0, 2)}</b>
+        `;
+      } else {
+        result.textContent = "Account not found. Please try again or Sign up";
+      }
+    }
+  </script>
+
+</body>
+</html>

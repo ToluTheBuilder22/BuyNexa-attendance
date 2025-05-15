@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"/>
+  <title>Gaming Accessories</title>
+  <link rel="stylesheet" href="game.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+
+<div class="cart-icon">
+  <i class='bx bx-cart' id="cart-icon"></i>
+  <div class="cart">
+    <i class='bx bx-x' id="close-cart"></i>
+    <h2 class="cart-title">Your Cart</h2>
+    <div class="cart-content"></div>
+    <div class="total">
+      <div>Total</div>
+      <div class="total-price">₦0</div>
+    </div>
+    <button type="button" class="btn-buy">Buy Now</button>
+  </div>
+</div>
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search product...">
+  <button onclick="searchProduct()">Search</button>
+  <button onclick="startVoiceSearch()">
+    <i class='bx bx-microphone'></i>
+  </button>
+  <p id="searchResult"></p>
+</div>
+
+<section class="shop">
+  <h2 class="section-title">Esports & Streaming Equipment</h2>
+  <div class="shop-content">
+
+   
+    <div class="product-box">
+ 
+        <img src="img5/microphone.jpg" alt="Microphone" class="product-img">
+     
+      <h3 class="product-title">Microphone</h3>
+      <span class="price">₦8500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+   
+    <div class="product-box">
+     
+        <img src="img5/capture card (2).jpg" alt="Capture Card" class="product-img">
+   
+      <h3 class="product-title">Capture Card</h3>
+      <span class="price">₦13500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+   
+    <div class="product-box">
+
+        <img src="img5/studio lighting.jpg" alt="Studio Lighting" class="product-img">
+  
+      <h3 class="product-title">Studio Lighting</h3>
+      <span class="price">₦11500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+   
+    <div class="product-box">
+    
+        <img src="img5/webcam.jpg" alt="Webcam" class="product-img">
+
+      <h3 class="product-title">Webcam</h3>
+      <span class="price">₦13500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+  
+    <div class="product-box">
+  
+        <img src="img5/stream deck.jpg" alt="Stream Deck" class="product-img">
+  
+      <h3 class="product-title">Stream Deck</h3>
+      <span class="price">₦23000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+ 
+    <div class="product-box">
+     
+        <img src="img5/gaming headset.jpg" alt="Gaming Headset" class="product-img">
+     
+      <h3 class="product-title">Gaming Headset</h3>
+      <span class="price">₦12000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+
+        <img src="img5/green screen.jpg" alt="Green Screen" class="product-img">
+
+      <h3 class="product-title">Green Screen</h3>
+      <span class="price">₦9500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+   
+    <div class="product-box">
+
+        <img src="img5/lighting kit.jpg" alt="Lighting Kit" class="product-img">
+
+      <h3 class="product-title">Lighting Kit</h3>
+      <span class="price">₦12500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+
+        <img src="img gadget/image 3/monitor.jpg" alt="Gaming Monitor" class="product-img">
+
+      <h3 class="product-title">Gaming Monitor</h3>
+      <span class="price">₦38000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+
+        <img src="img5/gaming keyboard.jpg" alt="Gaming Keyboard" class="product-img">
+
+      <h3 class="product-title">Gaming Keyboard</h3>
+      <span class="price">₦22000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+
+        <img src="img5/gaming mouse.jpg" alt="Gaming Mouse" class="product-img">
+    
+      <h3 class="product-title">Gaming Mouse</h3>
+      <span class="price">₦7800</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+   
+    <div class="product-box">
+
+        <img src="img5/gaming speaker.jpg" alt="Gaming Speaker" class="product-img">
+
+      <h3 class="product-title">Gaming Speaker</h3>
+      <span class="price">₦11500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+     
+        <img src="img5/headset stand.jpg" alt="Headset Stand" class="product-img">
+
+      <h3 class="product-title">Headset Stand</h3>
+      <span class="price">₦3600</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+   
+        <img src="img5/micstand.jpg" alt="Microphone Stand" class="product-img">
+    
+      <h3 class="product-title">Microphone Stand</h3>
+      <span class="price">₦6500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+   
+    <div class="product-box">
+   
+        <img src="img5/sound card.jpg" alt="Sound Card" class="product-img">
+    
+      <h3 class="product-title">Sound Card</h3>
+      <span class="price">₦9000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+  </div>
+</section>
+
+<script src="game.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"/>
+  <title>BuyNexa - Contact & Reviews</title>
+  <link rel="stylesheet" href="/Contact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">BuyNexa</div>
+   <nav>
+      <ul>
+        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="shop.html"><i class="fa fa-shopping-bag"></i></a></li>
+        <li><a href="about.html"><i class="fa fa-info-circle"></i></a></li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <section class="contact-info">
+    <div class="hear">
+      <h2>We Would Love to Hear from You</h2>
+      <p>At BuyNexa, we combine innovation, quality, and excellent service in everything we do. Whether you have a question about our products, need support, or simply want to share your feedback, we're here to listen. Let’s connect and make your experience extraordinary.</p>
+    </div>
+    <div class="details">
+      <div class="detail">
+        <h3>Our Office</h3>
+        <p>12, Adebisi Street, Lekki</p>
+      </div>
+      <div class="detail">
+        <h3>Phone</h3>
+        <p>+2349154609367</p>
+      </div>
+      <div class="detail">
+        <h3>Email</h3>
+        <p>info@buynexa.com</p>
+      </div>
+    </div>
+  </section>
+
+ 
+
+  
+  <section id="reviews">
+    <h2>Customer Reviews</h2>
+    <div class="reviews-list" id="reviewsList">
+     
+    </div>
+
+    <h3>Leave a Review</h3>
+    <form id="reviewForm">
+      <input type="text" id="reviewerName" placeholder="Your Full Name" required />
+      <textarea id="reviewMessage" placeholder="Your Review" rows="5" required></textarea>
+      <label for="reviewRating">Rate Us:</label>
+      <select id="reviewRating" required>
+        <option value="1">⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="5">⭐⭐⭐⭐⭐</option>
+      </select>
+      <button type="submit">Submit Review</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/login" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://www.whatsapp.com/download" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <p>&copy; BuyNexa. All Rights Reserved</p>
+  </footer>
+
+ 
+  <script>
+ 
+    document.getElementById('contactForm').addEventListener('submit', function(event){
+      event.preventDefault();
+      alert('Thank you, we will get back to you in 24 hours');
+      this.reset();
+    });
+
+   
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('reviewerName').value.trim();
+      const message = document.getElementById('reviewMessage').value.trim();
+      const rating = document.getElementById('reviewRating').value;
+
+      if (name && message && rating) {
+        const reviewContainer = document.getElementById('reviewsList');
+
+        const newReview = document.createElement('div');
+        newReview.classList.add('review');
+        newReview.innerHTML = `
+          <p><strong>${name}</strong></p>
+          <p>${'⭐'.repeat(rating)}</p>
+          <p>${message}</p>
+        `;
+
+        reviewContainer.prepend(newReview);
+
+        document.getElementById('reviewForm').reset();
+        alert('Thank you for your review!');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"
+  content="width=2.0,initial-scale=1.0"/>
+  <title>Call of Duty Top-Up | BuyNexa</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    button[type="button"],
+    button[type="submit"] {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #00ffcc;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .image-select img {
+      width: 100%;
+      max-width: 250px;
+      margin: 10px auto;
+      display: block;
+      cursor: pointer;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00ffcc;
+      transition: transform 0.3s ease;
+    }
+
+    .image-select img:hover {
+      transform: scale(1.05);
+    }
+
+    .options {
+      margin-top: 10px;
+      display: none;
+    }
+
+    .options label {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .bank-instructions {
+      background: #262626;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    .bank-instructions h3 {
+      margin-top: 0;
+      color: #00ffcc;
+    }
+    html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;      /* Prevent side scroll */
+  overflow-y: auto;        /* Allow vertical scroll */
+  overscroll-behavior: contain;
+  touch-action: pan-y;     /* Allow vertical hand scroll only */
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Call of Duty Top-Up</h1>
+    <form id="topupForm">
+      <label for="uid">COD UID:</label>
+      <input type="text" id="uid" name="uid" placeholder="Enter your COD UID" required>
+      <button type="button" onclick="startVoice('uid')">🎤</button>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <button type="button" onclick="startVoice('email')">🎤</button>
+
+      <div class="image-select">
+        <p>Select COD Points Amount:</p>
+        <img src="https://i.imgur.com/7S8Y1ND.png" alt="Call of Duty" onclick="toggleCODOptions()">
+        <div id="codOptions" class="options">
+          <label><input type="radio" name="codPoints" value="500 COD Points - ₦850" required> 500 COD Points - ₦850</label>
+          <label><input type="radio" name="codPoints" value="1200 COD Points - ₦1600"> 1200 COD Points - ₦1600</label>
+          <label><input type="radio" name="codPoints" value="2500 COD Points - ₦3800"> 2500 COD Points - ₦3800</label>
+          <label><input type="radio" name="codPoints" value="5000 COD Points - ₦7700"> 5000 COD Points - ₦7700</label>
+        </div>
+      </div>
+
+      <div class="bank-instructions">
+        <h3>Bank Transfer Instructions</h3>
+        <p><strong>Account Name:</strong> BuyNexa Store</p>
+        <p><strong>Bank:</strong> First Bank</p>
+        <p><strong>Account Number:</strong> 1234567890</p>
+        <p>After sending your payment, submit this form to notify us via WhatsApp.</p>
+      </div>
+
+      <button type="submit">Submit & Send via WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleCODOptions() {
+      const options = document.getElementById('codOptions');
+      options.style.display = options.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function startVoice(fieldId) {
+      if (!('webkitSpeechRecognition' in window)) {
+        alert("Voice input not supported in this browser.");
+        return;
+      }
+
+      const recognition = new webkitSpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        document.getElementById(fieldId).value = event.results[0][0].transcript;
+      };
+    }
+
+    document.getElementById("topupForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const uid = document.getElementById("uid").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const codPointsOption = document.querySelector('input[name="codPoints"]:checked');
+
+      if (!uid || !email || !codPointsOption) {
+        alert("Please fill all fields and select a COD Points amount.");
+        return;
+      }
+
+      const codPoints = codPointsOption.value;
+      const message = '*Call of Duty Top-Up Request*\n\nUID: ${uid}\nEmail: ${email}\nSelected Package: ${codPoints}';
+
+      const phoneNumber = "2349154609367"; // Your WhatsApp number
+      const whatsappURL = 'https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}';
+
+      window.open(whatsappURL, "_blank");
+    });
+  </script>
+</body>
+</html>

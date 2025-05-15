@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"
+  content="width=2.0,initial-scale=1.0"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #f1c40f; /* PUBG Yellow */
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    button[type="button"],
+    button[type="submit"] {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #f1c40f; /* PUBG Yellow */
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .image-select img {
+      width: 100%;
+      max-width: 250px;
+      margin: 10px auto;
+      display: block;
+      cursor: pointer;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #f1c40f;
+      transition: transform 0.3s ease;
+    }
+
+    .image-select img:hover {
+      transform: scale(1.05);
+    }
+
+    .options {
+      margin-top: 10px;
+      display: none;
+    }
+
+    .options label {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .bank-instructions {
+      background: #262626;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    .bank-instructions h3 {
+      margin-top: 0;
+      color: #f1c40f;
+    }
+    html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;      /* Prevent side scroll */
+  overflow-y: auto;        /* Allow vertical scroll */
+  overscroll-behavior: contain;
+  touch-action: pan-y;     /* Allow vertical hand scroll only */
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PUBG UC Top-Up</h1>
+    <form id="topupForm">
+      <label for="uid">PUBG UID:</label>
+      <input type="text" id="uid" name="uid" placeholder="Enter your PUBG UID" required>
+      <button type="button" onclick="startVoice('uid')">🎤</button>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <button type="button" onclick="startVoice('email')">🎤</button>
+
+      <div class="image-select">
+        <p>Select UC Amount:</p>
+        <img src="https://i.imgur.com/7S8Y1ND.png" alt="PUBG UC" onclick="toggleUCOptions()">
+        <div id="ucOptions" class="options">
+          <label><input type="radio" name="uc" value="300 UC - ₦850" required> 300 UC - ₦850</label>
+          <label><input type="radio" name="uc" value="600 UC - ₦1600"> 600 UC - ₦1600</label>
+          <label><input type="radio" name="uc" value="1200 UC - ₦3800"> 1200 UC - ₦3800</label>
+          <label><input type="radio" name="uc" value="2500 UC - ₦7700"> 2500 UC - ₦7700</label>
+        </div>
+      </div>
+
+      <div class="bank-instructions">
+        <h3>Bank Transfer Instructions</h3>
+        <p><strong>Account Name:</strong> PUBG Games</p>
+        <p><strong>Bank:</strong> Zenith Bank</p>
+        <p><strong>Account Number:</strong> 9876543210</p>
+        <p>After sending your payment, submit this form to notify us via WhatsApp.</p>
+      </div>
+
+      <button type="submit">Submit & Send via WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleUCOptions() {
+      const options = document.getElementById('ucOptions');
+      options.style.display = options.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function startVoice(fieldId) {
+      if (!('webkitSpeechRecognition' in window)) {
+        alert("Voice input not supported in this browser.");
+        return;
+      }
+
+      const recognition = new webkitSpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        document.getElementById(fieldId).value = event.results[0][0].transcript;
+      };
+    }
+
+    document.getElementById("topupForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const uid = document.getElementById("uid").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const ucOption = document.querySelector('input[name="uc"]:checked');
+
+      if (!uid || !email || !ucOption) {
+        alert("Please fill all fields and select a UC amount.");
+        return;
+      }
+
+      const uc = ucOption.value;
+      const message = '*PUBG UC Top-Up Request*\n\nUID: ${uid}\nEmail: ${email}\nSelected Package: ${uc}';
+
+      const phoneNumber = "2349154609367"; // Your WhatsApp number
+      const whatsappURL = 'https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}';
+
+      window.open(whatsappURL, "_blank");
+    });
+  </script>
+</body>
+</html>

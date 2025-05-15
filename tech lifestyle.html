@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"/>
+  <title>BuyNexa - Smart Home & Tech Lifestyle</title>
+  <link rel="stylesheet" href="game.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+
+<div class="cart-icon">
+  <i class='bx bx-cart' id="cart-icon"></i>
+  <div class="cart">
+    <i class='bx bx-x' id="close-cart"></i>
+    <h2 class="cart-title">Your Cart</h2>
+    <div class="cart-content"></div>
+    <div class="total">
+      <div>Total</div>
+      <div class="total-price">₦0</div>
+    </div>
+    <button type="button" class="btn-buy">Buy Now</button>
+  </div>
+</div>
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search product...">
+  <button onclick="searchProduct()">Search</button>
+  <button onclick="startVoiceSearch()">
+    <i class='bx bx-microphone'></i>
+  </button>
+  <p id="searchResult"></p>
+</div>
+
+
+<section class="shop">
+  <h2 class="section-title">Smart Home & Tech Lifestyle</h2>
+  <div class="shop-content">
+
+   
+    <div class="product-box">
+  
+        <img src="img6/smart light.jpg" alt="Smart Lights" class="product-img">
+    
+      <h3 class="product-title">Smart Lights</h3>
+      <span class="price">₦12000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+   
+    <div class="product-box">
+    
+        <img src="img6/speaker.jpg" alt="Smart Speaker" class="product-img">
+  
+      <h3 class="product-title">Smart Speaker</h3>
+      <span class="price">₦14000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+  
+    <div class="product-box">
+      <img src="image 3/⚡【Hotnew Products】⚡Digital Instant Read Meat Thermometer Kitchen Cooking Food Candy Thermometer for Oil Deep Fry BBQ Gri.jpg" alt="Smart Thermometer" class="product-img">
+ 
+      <h3 class="product-title">Smart Thermometer</h3>
+      <span class="price">₦8500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+  
+        <img src="img6/smart lock.jpg" alt="Smart Lock" class="product-img">
+ 
+      <h3 class="product-title">Smart Lock</h3>
+      <span class="price">₦18000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+    
+        <img src="img6/smart plug.jpg" alt="Smart Plug" class="product-img">
+    
+      <h3 class="product-title">Smart Plug</h3>
+      <span class="price">₦4500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+
+        <img src="img6/voice assistance.jpg" alt="Voice Assistant" class="product-img">
+    
+      <h3 class="product-title">Voice Assistant</h3>
+      <span class="price">₦9000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+
+        <img src="img6/camera.jpg" alt="Smart Security Camera" class="product-img">
+    
+      <h3 class="product-title">Smart Security Camera</h3>
+      <span class="price">₦25000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+   
+        <img src="img6/mirror.jpg" alt="Smart Mirror" class="product-img">
+      </a>
+      <h3 class="product-title">Smart Mirror</h3>
+      <span class="price">₦32000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+   
+        <img src="img6/wearable tech.jpg" alt="Wearable Tech" class="product-img">
+   
+      <h3 class="product-title">Wearable Tech</h3>
+      <span class="price">₦22000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+   
+    <div class="product-box">
+   
+        <img src="img6/smart fridge.jpg" alt="Smart Fridge" class="product-img">
+ 
+      <h3 class="product-title">Smart Fridge</h3>
+      <span class="price">₦120000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+    
+    <div class="product-box">
+ 
+        <img src="img6/television.jpg" alt="Smart TV" class="product-img">
+     
+      <h3 class="product-title">Smart TV</h3>
+      <span class="price">₦75000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+  
+    <div class="product-box">
+    
+        <img src="img6/blender.jpg" alt="Smart Blender" class="product-img">
+ 
+      <h3 class="product-title">Smart Blender</h3>
+      <span class="price">₦13500</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+  
+    <div class="product-box">
+     
+        <img src="img6/vaccum.jpg" alt="Smart Vacuum" class="product-img">
+  
+      <h3 class="product-title">Smart Vacuum</h3>
+      <span class="price">₦27000</span>
+      <i class='bx bx-cart-add add-cart'></i>
+    </div>
+
+   
+    
+  </div>
+</section>
+
+<script src="game.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"/>
+  <title>BuyNexa - Profile</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    .profile-container {
+      max-width: 700px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-image {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-image img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #007bff;
+    }
+
+    #uploadPhoto {
+      margin-top: 10px;
+    }
+
+    form {
+      width: 100%;
+    }
+
+    .form-row {
+      margin-bottom: 15px;
+    }
+
+    .form-row label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .save-btn {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .save-btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <h2>User Profile</h2>
+    <div class="profile-card">
+      <div class="profile-image">
+        <img id="profilePic" src="https://via.placeholder.com/120" alt="Profile Picture" />
+        <input type="file" id="uploadPhoto" accept="image/*" />
+      </div>
+      <form id="profileForm">
+        <div class="form-row">
+          <label>Full Name</label>
+          <input type="text" id="name" placeholder="Your full name" />
+        </div>
+        <div class="form-row">
+          <label>Date of Birth</label>
+          <input type="date" id="dob" />
+        </div>
+        <div class="form-row">
+          <label>Phone Number</label>
+          <input type="tel" id="phone" placeholder="e.g. 09123456789" />
+        </div>
+        <div class="form-row">
+          <label>Gender</label>
+          <select id="gender">
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Country</label>
+          <input type="text" id="country" placeholder="Your country" />
+        </div>
+        <div class="form-row">
+          <label>Preferred Language</label>
+          <input type="text" id="language" placeholder="e.g. English" />
+        </div>
+        
+        <div class="form-row">
+          <label>Bio</label>
+          <textarea id="bio" placeholder="Tell us a little about yourself..."></textarea>
+        </div>
+        <button type="submit" class="save-btn">Save Profile</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const fields = ["name", "dob", "phone", "gender", "country", "language", "mode", "bio"];
+    const profilePic = document.getElementById("profilePic");
+    const uploadPhoto = document.getElementById("uploadPhoto");
+
+    function loadProfile() {
+      fields.forEach(id => {
+        if (localStorage.getItem(id)) {
+          document.getElementById(id).value = localStorage.getItem(id);
+        }
+      });
+      const image = localStorage.getItem("profileImage");
+      if (image) {
+        profilePic.src = image;
+      }
+    }
+
+    function saveProfile() {
+      fields.forEach(id => {
+        localStorage.setItem(id, document.getElementById(id).value);
+      });
+    }
+
+    uploadPhoto.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          profilePic.src = reader.result;
+          localStorage.setItem("profileImage", reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById("profileForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      saveProfile();
+      alert("Profile saved and remembered!");
+    });
+
+    window.addEventListener("DOMContentLoaded", loadProfile);
+  </script>
+</body>
+</html>

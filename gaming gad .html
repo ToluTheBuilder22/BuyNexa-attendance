@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"
+  content="width=2.0,initial-scale=1.0"/>
+  <title>BuyNexa - Gaming Gadget</title>
+  <link rel="stylesheet" href="game.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="cart-icon">
+  <i class='bx bx-cart' id="cart-icon"></i>
+  <div class="cart">
+    <i class='bx bx-x' id="close-cart"></i>
+    <h2 class="cart-title">Your Cart</h2>
+    <div class="cart-content"></div>
+    <div class="total">
+      <div>Total</div>
+      <div class="total-price">₦0</div>
+    </div>
+<div class="buyNowButton">
+ <a href="checkout.html" id="buyNowButton">Buy Now</a>
+ </div>
+  </div>
+</div>
+
+
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search product...">
+  <button onclick="searchProduct()">Search</button>
+  <button onclick="startVoiceSearch()">
+    <i class='bx bx-microphone'></i>
+  </button>
+  <p id="searchResult"></p>
+</div>
+
+  <header>
+    <h1></h1>
+  </header>
+
+  <section class="shop">
+    <h2 class="section-title">Gaming Gadget</h2>
+    <div class="shop-content">
+      
+      <div class="product-box">
+        <img src="image 3/gaming accesories/wireless controller.jpg" alt="Wireless Game Controller" class="product-img">
+        <h3 class="product-title">Wireless Game Controller</h3>
+        <span class="price">₦14500</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/gaming headset.jpg" alt="Gaming Headset" class="product-img">
+        <h3 class="product-title">Gaming Headset</h3>
+        <span class="price">₦18500</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/gaming key board.jpg" alt="Mechanical Keyboard" class="product-img">
+        <h3 class="product-title">Mechanical Keyboard</h3>
+        <span class="price">₦24000</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/gaaming mouse.jpg" alt="Gaming Mouse" class="product-img">
+        <h3 class="product-title">Gaming Mouse</h3>
+        <span class="price">₦9000</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/mosepad.jpg" alt="RGB Mouse Pad" class="product-img">
+        <h3 class="product-title">RGB Mouse Pad</h3>
+        <span class="price">₦4000</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/Controller Holder Figure _ Headphone Stand & Controller.jpg" alt="Controller Stand" class="product-img">
+        <h3 class="product-title">Controller Stand</h3>
+        <span class="price">₦3500</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/cooling fan.jpg" alt="Console Cooling Fan" class="product-img">
+        <h3 class="product-title">Console Cooling Fan</h3>
+        <span class="price">₦12500</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="img5/headset stand.jpg" alt="Headphone Stand" class="product-img">
+        <h3 class="product-title">Headphone Stand</h3>
+        <span class="price">₦3000</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/thumb grip.jpg" alt="Thumb Grips" class="product-img">
+        <h3 class="product-title">Thumb Grips</h3>
+        <span class="price">₦2000</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/travel case.jpg" alt="Arc Travel Case" class="product-img">
+        <h3 class="product-title">Arc Travel Case</h3>
+        <span class="price">₦5200</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/charging dock.jpg" alt="Charging Dock" class="product-img">
+        <h3 class="product-title">Charging Dock</h3>
+        <span class="price">₦8200</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/web cam.jpg" alt="HD Webcam" class="product-img">
+        <h3 class="product-title">HD Webcam</h3>
+        <span class="price">₦15500</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/cable organizer.jpg" alt="Cable Organizer" class="product-img">
+        <h3 class="product-title">Cable Organizer</h3>
+        <span class="price">₦2800</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/light strip.jpg" alt="LED Light Strip" class="product-img">
+        <h3 class="product-title">LED Light Strip</h3>
+        <span class="price">₦4200</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/deck mat.jpg" alt="Accessory Decks Mat" class="product-img">
+        <h3 class="product-title">Accessory Decks Mat</h3>
+        <span class="price">₦2200</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/travel case.jpg" alt="Switch Travel Case" class="product-img">
+        <h3 class="product-title">Switch Travel Case</h3>
+        <span class="price">₦7500</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/audio filter.jpg" alt="Audio Filter" class="product-img">
+        <h3 class="product-title">Audio Filter</h3>
+        <span class="price">₦4500</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/usb hub.jpg" alt="USB Hub" class="product-img">
+        <h3 class="product-title">USB Hub</h3>
+        <span class="price">₦3300</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/conroller skin.jpg" alt="Controller Skin" class="product-img">
+        <h3 class="product-title">Controller Skin</h3>
+        <span class="price">₦1500</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+      <div class="product-box">
+        <img src="image 3/gaming accesories/cleaning kit.jpg" alt="Cleaning Kit" class="product-img">
+        <h3 class="product-title">Cleaning Kit</h3>
+        <span class="price">₦2500</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+       <div class="product-box">
+        <img src="image 3/gaming pc.jpg" alt="gaming PC" class="product-img">
+        <h3 class="product-title">Gaming Pc</h3>
+        <span class="price">₦1000000</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+       <div class="product-box">
+        <img src="image 3/Stormy Skies_ Epic Blue Thunder Gaming Room.jpg" alt="Celling Cloud" class="product-img">
+        <h3 class="product-title">Celling Cloud</h3>
+        <span class="price">₦100000</span>
+        <i class='bx bx-cart-add add-cart'></i>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 BuyNexa. All rights reserved.</p>
+  </footer>
+
+  <script src="game.js"></script>
+</body>
+</html>

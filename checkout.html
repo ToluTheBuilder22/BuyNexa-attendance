@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"
+  content="width=2.0,initial-scale=1.0"/>
+  <title>Checkout - BuyNexa</title>
+  <style>
+    /* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f4f4f4;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #555;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.payment-details {
+  margin-top: 20px;
+  display: none;
+}
+
+.cart-summary {
+  background: #f9f9f9;
+  padding: 20px;
+  margin-top: 30px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-details p {
+  margin: 3px 0;
+}
+
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background: #218838;
+}
+
+.total-section {
+  text-align: right;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.payment-message {
+  background-color: #f7f7f7;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.cart-summary strong {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  label {
+    font-size: 1.1rem;
+  }
+
+  input, select {
+    font-size: 1.1rem;
+    padding: 14px;
+  }
+
+  .cart-item img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cart-item-details p {
+    font-size: 1rem;
+  }
+
+  .submit-btn {
+    font-size: 1.2rem;
+  }
+
+  .total-section {
+    font-size: 1.1rem;
+  }
+}
+
+/* Very small devices (portrait mobile) */
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  input, select {
+    font-size: 1rem;
+    padding: 14px;
+  }
+
+  .cart-item img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cart-item-details p {
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    font-size: 1.1rem;
+  }
+
+  .total-section {
+    font-size: 1rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Checkout</h2>
+    <form id="checkoutForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" required />
+
+      <label for="payment">Payment Method</label>
+      <select id="payment" required>
+        <option value="">Select Payment</option>
+        <option value="credit">Credit Card</option>
+        <option value="bank">Bank Transfer</option>
+        <option value="paypal">PayPal</option>
+      </select>
+
+      <div class="payment-details" id="credit-details">
+        <label>Card Number</label>
+        <input type="text" placeholder="1234 5678 9012 3456"/>
+        <label>Expiry Date</label>
+        <input type="text" placeholder="MM/YY"/>
+        <label>CVV</label>
+        <input type="text" placeholder="123"/>
+      </div>
+
+      <div class="payment-details" id="bank-details">
+        <p>Transfer to: <strong>BuyNexa Bank, 1234567890</strong></p>
+        <p>After payment, this order will be sent for confirmation.</p>
+      </div>
+
+      <div class="payment-details" id="paypal-details">
+        <p>You will be redirected to PayPal to complete the payment.</p>
+      </div>
+
+      <div class="cart-summary" id="cartSummary">
+        <strong>Cart Summary:</strong>
+        <div id="cartItems"></div>
+        <div class="total-section">Total: <span id="totalAmount">₦0</span></div>
+      </div>
+
+      <button type="submit" class="submit-btn">Place Order</button>
+    </form>
+  </div>
+
+ <script>
+  const cartItemsContainer = document.getElementById('cartItems');
+  const totalAmountEl = document.getElementById('totalAmount');
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+  function updateCartDisplay() {
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+
+    Object.keys(cart).forEach(key => {
+      const item = cart[key];
+      const price = parseFloat(item.price.replace('₦', '').replace(/,/g, '')) || 0;
+      const quantity = parseInt(item.quantity);
+      const subtotal = price * quantity;
+      total += subtotal;
+
+      const itemEl = document.createElement('div');
+      itemEl.className = 'cart-item';
+
+      itemEl.innerHTML = `
+        <img src="${item.image}" alt="${item.title}">
+        <div class="cart-item-details">
+          <p><strong>${item.title}</strong></p>
+          <p>Price: ${item.price} x ${quantity}</p>
+          <p>Subtotal: ₦${subtotal.toLocaleString()}</p>
+        </div>
+        <button class="delete-btn" onclick="removeItem('${key}')">Delete</button>
+      `;
+
+      cartItemsContainer.appendChild(itemEl);
+    });
+
+    totalAmountEl.textContent = '₦' + total.toLocaleString();
+  }
+
+  function removeItem(key) {
+    delete cart[key];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartDisplay();
+  }
+
+  updateCartDisplay();
+
+  // Payment selection display logic
+  const paymentSelect = document.getElementById('payment');
+  const creditDetails = document.getElementById('credit-details');
+  const bankDetails = document.getElementById('bank-details');
+  const paypalDetails = document.getElementById('paypal-details');
+
+  paymentSelect.addEventListener('change', () => {
+    creditDetails.style.display = 'none';
+    bankDetails.style.display = 'none';
+    paypalDetails.style.display = 'none';
+
+    const value = paymentSelect.value;
+    if (value === 'credit') creditDetails.style.display = 'block';
+    if (value === 'bank') bankDetails.style.display = 'block';
+    if (value === 'paypal') paypalDetails.style.display = 'block';
+  });
+
+  // Submit
+  document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const payment = paymentSelect.value;
+
+    // Construct the message
+    const orderDetails = `BuyNexa Order:
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Payment Method: ${payment}
+Total: ${totalAmountEl.textContent}
+
+Items:
+${Object.values(cart).map(item => '${item.title} x${item.quantity}').join('\n')}`;
+
+    // WhatsApp URL to send order details
+    const whatsappURL = 'https://wa.me/2349154609367?text=${encodeURIComponent(orderDetails)}';
+
+    // Clear cart after order
+    localStorage.removeItem('cart');
+
+    // Redirect to WhatsApp with the order details
+    window.open(whatsappURL, '_blank');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buynexa Dictionary</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+      height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1503457020212-b16e2c85bc16?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/img/stars.png') repeat top center;
+      animation: moveStars 100s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 5000px; }
+    }
+
+    .floating-icon {
+      position: absolute;
+      width: 40px;
+      opacity: 0.7;
+      animation: floatIcon 20s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes floatIcon {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 90%;
+      max-width: 800px;
+      padding: 20px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+      text-align: center;
+      animation: floatCard 6s ease-in-out infinite;
+      margin-top: 40px;
+    }
+
+    @keyframes floatCard {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    input {
+      width: 70%;
+      padding: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #5e9ca0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #3f6a65;
+    }
+
+    .response {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      font-size: 1.1em;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    a {
+      color: #00f;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: #0ff;
+    }
+        .html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;      /* Prevent side scroll */
+  overflow-y: auto;        /* Allow vertical scroll */
+  overscroll-behavior: contain;
+  touch-action: pan-y;     /* Allow vertical hand scroll only */
+}
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <!-- Floating Icons -->
+  <img src="https://cdn-icons-png.flaticon.com/512/2306/2306184.png" class="floating-icon" style="left: 10%; animation-delay: 0s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/3208/3208707.png" class="floating-icon" style="left: 50%; animation-delay: 5s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/1037/1037120.png" class="floating-icon" style="left: 80%; animation-delay: 10s;">
+
+  <div class="container">
+    <h1>BuyNexa Dictionary</h1>
+    <input type="text" id="searchQuery" placeholder="Enter a word (e.g. photosynthesis)" />
+    <br>
+    <button onclick="fetchData()">Search</button>
+    <div id="response" class="response"></div>
+  </div>
+
+  <script>
+    let isSpeaking = false;
+    let utterance = new SpeechSynthesisUtterance();
+
+    function fetchData() {
+      const query = document.getElementById('searchQuery').value.trim();
+      if (!query) {
+        alert('Please enter a term to search.');
+        return;
+      }
+
+      const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.title && data.extract) {
+            const articleUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(data.title.replace(/ /g, '_'))}`;
+            document.getElementById('response').innerHTML = `
+              <h2>${data.title}</h2>
+              <p>${data.description ? '<strong>Type:</strong> ' + data.description + '<br>' : ''}</p>
+              <p>${data.extract}</p>
+              <p><a href="${articleUrl}" target="_blank">Read full article on Wikipedia</a></p>
+              <button onclick="speakContent()">🔊 Read Aloud</button>
+              <button onclick="stopSpeaking()">🔇 Stop Reading</button>
+            `;
+          } else {
+            document.getElementById('response').innerHTML = '<p>No information found for the entered term.</p>';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          document.getElementById('response').innerHTML = '<p>An error occurred while fetching data.</p>';
+        });
+    }
+
+    function speakContent() {
+      if (isSpeaking) {
+        speechSynthesis.cancel();
+        isSpeaking = false;
+        return;
+      }
+      const text = document.querySelector('.response').innerText;
+      utterance.text = text;
+      speechSynthesis.speak(utterance);
+      isSpeaking = true;
+    }
+
+    function stopSpeaking() {
+      speechSynthesis.cancel();
+      isSpeaking = false;
+    }
+
+    // Double tap to stop speaking on mobile
+    let tapCount = 0;
+    document.body.addEventListener('touchend', () => {
+      tapCount++;
+      if (tapCount === 2) {
+        stopSpeaking();
+        tapCount = 0;
+      }
+      setTimeout(() => tapCount = 0, 400); // Reset
+    });
+  </script>
+</body>
+</html>

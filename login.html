@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"/>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .input-field:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .signup-link {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .signup-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    .forgot-password {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .forgot-password a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .reset-container {
+      display: none;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .reset-btn {
+      background-color: #28a745;
+    }
+
+    .reset-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login to Your Account</h2>
+    <input type="email" class="input-field" placeholder="Email" id="email" />
+    <input type="password" class="input-field" placeholder="Password" id="password" />
+    <button class="btn" onclick="login()">Login</button>
+
+    <div class="forgot-password">
+      <a href="forgot.html" onclick="showForgotPassword()">Forgot Password?</a>
+    </div>
+
+    <div class="signup-link">
+      Don't have an account? <a href="signup.html">Sign up here</a>
+    </div>
+
+    <!-- Forgot Password Form -->
+    <div class="reset-container" id="reset-container">
+      <h3>Reset Password</h3>
+      <p>Please enter your email address. A verification code will be sent to you.</p>
+      <input type="email" class="input-field" placeholder="Email" id="reset-email" />
+      <button class="btn reset-btn" onclick="sendVerificationCode()">Send Code</button>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (!email || !password) {
+        alert('Please enter both email and password.');
+      } else {
+        alert('Logged in successfully!');
+        // You can add further authentication logic here
+      }
+    }
+
+    function showForgotPassword() {
+      document.querySelector('.login-container').style.display = 'none';
+      document.getElementById('reset-container').style.display = 'block';
+    }
+
+    function sendVerificationCode() {
+      const resetEmail = document.getElementById('reset-email').value;
+
+      if (!resetEmail) {
+        alert('Please enter a valid email.');
+      } else {
+        // Simulate sending a code (replace with actual email API logic)
+        alert('A verification code has been sent to your email.');
+        // Optionally, redirect the user to a page where they can enter the verification code
+      }
+    }
+  </script>
+</body>
+</html>

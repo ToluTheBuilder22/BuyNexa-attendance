@@ -1,0 +1,239 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: #f4f7fa;
+  color: #333;
+  padding-bottom: 80px;
+}
+
+
+header {
+  background: #001f3f;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header .logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  transition: background 0.3s;
+  border-radius: 5px;
+}
+
+nav a:hover,
+nav a.active {
+  background: #0074D9;
+}
+
+
+.contact-info {
+  padding: 50px 30px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.hear h2 {
+  font-size: 32px;
+  color: #0074D9;
+  margin-bottom: 10px;
+}
+
+.hear p {
+  font-size: 18px;
+  color: #555;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.detail {
+  flex: 1 1 30%;
+  background: #eef5fb;
+  padding: 20px;
+  border-left: 4px solid #0074D9;
+  margin: 10px 0;
+}
+
+
+#contact {
+  padding: 40px 30px;
+  background: #ffffff;
+  max-width: 700px;
+  margin: 40px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  border-radius: 10px;
+}
+
+#contact h2 {
+  color: #0074D9;
+  margin-bottom: 10px;
+}
+
+#contact p {
+  margin-bottom: 20px;
+}
+
+#contact form input,
+#contact form textarea,
+#reviewForm input,
+#reviewForm textarea,
+#reviewForm select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s;
+}
+
+#contact form input:focus,
+#contact form textarea:focus,
+#reviewForm input:focus,
+#reviewForm textarea:focus,
+#reviewForm select:focus {
+  border-color: #0074D9;
+  outline: none;
+}
+
+button[type="submit"] {
+  background: #0074D9;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #005fa3;
+}
+
+
+#reviews {
+  padding: 40px 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+#reviews h2 {
+  margin-bottom: 20px;
+  color: #0074D9;
+}
+
+.reviews-list {
+  margin-bottom: 30px;
+}
+
+.review {
+  background: #f0f8ff;
+  border-left: 4px solid #0074D9;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+
+footer {
+    background-color: #1a1a2e;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 40px;
+}
+
+footer .footer-links{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+footer .footer-links a{
+    color: white;
+    font-style: italic;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+footer .footer-links a:hover{
+    color: #6a4e23;
+    transition: 0.3s ease-in;
+    transform: scale(1.07);
+}
+
+footer .social-icons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+footer .social-icons a{
+    color: white;
+    font-size: 1.5rem;
+}
+
+footer .social-icons a:hover{
+    color: #8d6e42;
+    transition: 0.3s ease-in;
+    transform: scale(1.53);
+}
+
+footer p{
+    margin: 0;
+    font-size: 0.98rem;
+}
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;      /* Prevent side scroll */
+  overflow-y: auto;        /* Allow vertical scroll */
+  overscroll-behavior: contain;
+  touch-action: pan-y;     /* Allow vertical hand scroll only */
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;      /* Prevent side scroll */
+  overflow-y: auto;        /* Allow vertical scroll */
+  overscroll-behavior: contain;
+  touch-action: pan-y;     /* Allow vertical hand scroll only */
+}
